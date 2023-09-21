@@ -51,7 +51,12 @@ class PaintRobot
     in_bounds = (0...rows).include?(new_dir_y) && (0...columns).include?(new_dir_x)
     not_painted = grid[new_dir_x][new_dir_y] == 0 || grid[new_dir_x][new_dir_y] == nil
 
-    return unless in_bounds
+    unless in_bounds
+      puts ""
+      puts "Invalid direction: #{direction}"
+      puts ""
+      return
+    end
 
     if in_bounds && not_painted
       grid[new_dir_x][new_dir_y] = 1
